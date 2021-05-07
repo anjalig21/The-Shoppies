@@ -1,43 +1,67 @@
-import React, {useCallback, useState} from 'react';
-import {Icon, TextField, Autocomplete, TextContainer} from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import React, { useCallback, useEffect, useState } from "react";
+import { Icon, Thumbnail, Autocomplete, TextContainer } from "@shopify/polaris";
+import { SearchMinor } from "@shopify/polaris-icons";
+import { useLazyQuery } from "@apollo/client";
+import { LOAD_TITLE } from "../../GraphQL/Queries";
+import movieInterface from "../../Models/movies";
+import { OptionDescriptor } from "@shopify/polaris/dist/types/latest/src/components/OptionList";
+import { ImageMajor } from '@shopify/polaris-icons';
 
 export default function SearchBar() {
   const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
+    { value: "rustic", label: "Rustic" },
+    { value: "antique", label: "Antique" },
+    { value: "vinyl", label: "Vinyl" },
+    { value: "vintage", label: "Vintage" },
+    { value: "refurbished", label: "Refurbished" },
   ];
+
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const [options, setOptions] = useState(deselectedOptions);
+  const [inputValue, setInputValue] = useState("");
+  const [options, setOptions] = useState<OptionDescriptor[]>(deselectedOptions);
   const [loading, setLoading] = useState(false);
+  const [movieType, { data }] = useLazyQuery(LOAD_TITLE, {
+    variables: {
+      title: inputValue,
+    },
+  });
+
+  useEffect(() => {
+    let movies: OptionDescriptor[] = [];
+    if (data?.movieSearch) {
+      data.movieSearch.map((movie: movieInterface) => {
+        if (movie.Type == "movie") {
+          movies.push({
+            value: movie.imdbID,
+            label: `${movie.Title} (${movie.Year})`,
+            media: (
+              <Thumbnail
+                source= {(movie.Poster !== "N/A") ? movie.Poster : ImageMajor}
+                alt="Thumbnail"
+              />
+            ),
+          });
+        }
+      });
+    }
+    setOptions(movies);
+    setLoading(false);
+  }, [data]);
 
   const updateText = useCallback(
     (value) => {
       setInputValue(value);
-
       if (!loading) {
         setLoading(true);
       }
-
-      setTimeout(() => {
-        if (value === '') {
-          setOptions(deselectedOptions);
-          setLoading(false);
-          return;
-        }
-        const filterRegex = new RegExp(value, 'i');
-        const resultOptions = options.filter((option) =>
-          option.label.match(filterRegex),
-        );
-        setOptions(resultOptions);
+      if (value === "") {
+        setOptions(deselectedOptions);
         setLoading(false);
-      }, 300);
+        return;
+      }
+      movieType();
     },
-    [deselectedOptions, loading, options],
+    [deselectedOptions, loading]
   );
 
   const updateSelection = useCallback(
@@ -51,7 +75,7 @@ export default function SearchBar() {
       setSelectedOptions(selected);
       setInputValue(selectedText);
     },
-    [options],
+    [options]
   );
 
   const textField = (
@@ -67,14 +91,14 @@ export default function SearchBar() {
   const emptyState = (
     <React.Fragment>
       <Icon source={SearchMinor} />
-      <div style={{textAlign: 'center'}}>
+      <div style={{ textAlign: "center" }}>
         <TextContainer>Could not find any results</TextContainer>
       </div>
     </React.Fragment>
   );
 
   return (
-    <div style={{height: '225px'}}>
+    <div style={{ height: "225px" }}>
       <Autocomplete
         options={options}
         selected={selectedOptions}

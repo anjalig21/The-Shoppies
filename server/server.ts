@@ -1,10 +1,12 @@
 import axios from 'axios';
 import movieType from "./Schemas/TypeDefs/movieType";
 import movieSearch from "./Schemas/Interfaces/movieSearch";
+const cors = require('cors');
 require("dotenv").config();
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const app = express();
+app.use(cors());
 const port: string = process.env.PORT || '5000';
 
 import {
