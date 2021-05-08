@@ -1,0 +1,8 @@
+.mainResults {
+    flex-grow: 2;
+}
+
+.Results {
+    overflow-y: auto;
+    height: 60vh
+}
