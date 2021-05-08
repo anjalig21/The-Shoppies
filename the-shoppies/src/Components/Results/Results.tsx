@@ -3,9 +3,12 @@ import MovieCard from "../MovieCard/MovieCard"
 import {Card} from '@shopify/polaris';
 import "./ResultStyles.css"
 import SearchBarHook from "../SearchBar/SearchBarHook"
+import { useSelector } from 'react-redux';
+import { RootState } from '../../reducers';
 
 const Results = () => {
     const {search} = SearchBarHook();
+    const movieList = useSelector((state: RootState) => state.movieList)
     return (
         <div className="mainResults">
             {console.log(search)}
@@ -14,14 +17,9 @@ const Results = () => {
                     console.log(mov);
                 })}
                 <div className="Results">
-                <MovieCard movieTitle="Hello" movieDescription="hello"/>
-                &nbsp;
-                <MovieCard movieTitle="Hello" movieDescription="hello"/>
-                &nbsp;
-                <MovieCard movieTitle="Hello" movieDescription="hello"/>
-                &nbsp;
-                <MovieCard movieTitle="Hello" movieDescription="hello"/>
-                &nbsp;
+                    {movieList?.map((movie: any) => {
+                    return (<MovieCard movieTitle={movie.Title} movieDescription={movie.Year} moviePoster={movie.Poster}/>)
+                    })}
                 </div>
             </Card>
             
