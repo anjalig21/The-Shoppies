@@ -1,0 +1,31 @@
+.cont {
+    display: flex;
+}
+
+.posters {
+    width: 10vh;
+    height: auto;
+}
+
+.info {
+    font-weight: 300;
+    margin-top: 5%;
+    
+}
+
+.title {
+    font-weight: 700;
+}
+
+.spacing {
+    flex-grow: 0.05;
+}
+
+.button {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.spacingButton{
+    flex-grow: 1;
+}
