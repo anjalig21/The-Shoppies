@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.Components {
+  padding: 10%;
+}
+
+.ResultsandNominations {
+  display: flex;
+}
+
+/* .NominationsComponent {
+  display: flex;
+} */

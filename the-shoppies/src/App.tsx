@@ -1,5 +1,7 @@
-import React from 'react';
-import SearchBar from './Components/SearchBar/SearchBar';
+import React from "react";
+import SearchBar from "./Components/SearchBar/SearchBar";
+import Results from "./Components/Results/Results";
+import Nominations from './Components/Nominations/Nominations'
 import "./App.css";
 import {
   ApolloClient,
@@ -31,7 +33,13 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <SearchBar />
+      <div className="Components">
+        <SearchBar />
+        <div className="ResultsandNominations">
+          <Results />
+          <Nominations />
+        </div>
+      </div>
     </ApolloProvider>
   );
 }
