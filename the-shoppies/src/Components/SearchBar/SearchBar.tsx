@@ -5,7 +5,8 @@ import { useLazyQuery } from "@apollo/client";
 import { LOAD_TITLE } from "../../GraphQL/Queries";
 import movieInterface from "../../Models/movies";
 import { OptionDescriptor } from "@shopify/polaris/dist/types/latest/src/components/OptionList";
-import { ImageMajor } from '@shopify/polaris-icons';
+import { ImageMajor } from "@shopify/polaris-icons";
+import SearchBarHook from "./SearchBarHook";
 
 export default function SearchBar() {
   const deselectedOptions = [
@@ -20,6 +21,7 @@ export default function SearchBar() {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState<OptionDescriptor[]>(deselectedOptions);
   const [loading, setLoading] = useState(false);
+  const {setSearch} = SearchBarHook();
   const [movieType, { data }] = useLazyQuery(LOAD_TITLE, {
     variables: {
       title: inputValue,
@@ -36,7 +38,7 @@ export default function SearchBar() {
             label: `${movie.Title} (${movie.Year})`,
             media: (
               <Thumbnail
-                source= {(movie.Poster !== "N/A") ? movie.Poster : ImageMajor}
+                source={movie.Poster !== "N/A" ? movie.Poster : ImageMajor}
                 alt="Thumbnail"
               />
             ),
@@ -81,7 +83,7 @@ export default function SearchBar() {
   const textField = (
     <Autocomplete.TextField
       onChange={updateText}
-      label="Tags"
+      label="Title"
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
@@ -97,8 +99,14 @@ export default function SearchBar() {
     </React.Fragment>
   );
 
+  function onClicking(e: KeyboardEvent) {
+    if (e.code === "Enter") {
+      setSearch(data);
+    }
+  }
+
   return (
-    <div style={{ height: "225px" }}>
+    <div style={{ height: "20vh" }} onKeyPress={(e: any) => onClicking(e)}>
       <Autocomplete
         options={options}
         selected={selectedOptions}
