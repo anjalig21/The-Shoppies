@@ -7,6 +7,8 @@ import movieInterface from "../../Models/movies";
 import { OptionDescriptor } from "@shopify/polaris/dist/types/latest/src/components/OptionList";
 import { ImageMajor } from "@shopify/polaris-icons";
 import SearchBarHook from "./SearchBarHook";
+import { useDispatch } from "react-redux";
+import { setMovList } from "../../actions";
 
 export default function SearchBar() {
   const deselectedOptions = [
@@ -21,7 +23,9 @@ export default function SearchBar() {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState<OptionDescriptor[]>(deselectedOptions);
   const [loading, setLoading] = useState(false);
-  const {setSearch} = SearchBarHook();
+  const [bool, setBool] = useState(true);
+  const { setSearch } = SearchBarHook();
+  const dispatch = useDispatch();
   const [movieType, { data }] = useLazyQuery(LOAD_TITLE, {
     variables: {
       title: inputValue,
@@ -52,6 +56,7 @@ export default function SearchBar() {
 
   const updateText = useCallback(
     (value) => {
+      setBool(true);
       setInputValue(value);
       if (!loading) {
         setLoading(true);
@@ -92,16 +97,22 @@ export default function SearchBar() {
 
   const emptyState = (
     <React.Fragment>
-      <Icon source={SearchMinor} />
-      <div style={{ textAlign: "center" }}>
-        <TextContainer>Could not find any results</TextContainer>
-      </div>
+      {bool && (
+        <>
+          <Icon source={SearchMinor} />
+          <div style={{ textAlign: "center" }}>
+            <TextContainer>Could not find any results</TextContainer>
+          </div>
+        </>
+      )}
     </React.Fragment>
   );
 
   function onClicking(e: KeyboardEvent) {
     if (e.code === "Enter") {
-      setSearch(data);
+      dispatch(setMovList(data?.movieSearch));
+      setBool(false);
+      setOptions([]);
     }
   }
 
