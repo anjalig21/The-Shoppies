@@ -124,9 +124,11 @@ export default function SearchBar() {
 
   function onClicking(e: KeyboardEvent) {
     if (e.code === "Enter") {
-      dispatch(setMovList(data?.movieSearch));
-      setBool(false);
-      setOptions([]);
+      if (data?.movieSearch) {
+        dispatch(setMovList(data?.movieSearch));
+        setBool(false);
+        setOptions([]);
+      }
     }
   }
 

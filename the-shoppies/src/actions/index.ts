@@ -12,3 +12,16 @@ export const setBoolTrigger = () => {
     type: "setTrigger",
   };
 };
+
+export const setNomination = (payload: movieInterface[]) => {
+  return {
+    type: "setNomination",
+    payload: payload
+  }
+}
+
+export const setChangeBool = () => {
+  return {
+    type: "setChangeBool",
+  };
+};

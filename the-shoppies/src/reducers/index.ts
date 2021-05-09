@@ -1,11 +1,15 @@
 import { combineReducers, compose, createStore } from "redux";
+import changeState from "./changeState";
 import movieList from './movieList';
+import Nomination from "./Nominate";
 import trigger from "./trigger";
 
 
 const rootReducer = combineReducers({
     movieList: movieList,
-    trigger: trigger
+    trigger: trigger,
+    Nomination: Nomination,
+    changeState: changeState
 });
 
 declare global {

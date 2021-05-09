@@ -1,17 +1,40 @@
-import React from 'react'
-import "./NominationStyles.css"
-import {Card} from '@shopify/polaris';
-
+import React, { useEffect, useState } from "react";
+import "./NominationStyles.css";
+import NominationCard from "../NominationCard/NominationCard";
+import { Card } from "@shopify/polaris";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../../reducers";
 
 const Nominations = () => {
-    return (
-        <div className="Nominations">
-            <Card>
-                Results
-            </Card>
-            
-        </div>
-    )
-}
+  const Nomination = useSelector((state: RootState) => state.Nomination);
+  const ChangeState = useSelector((state: RootState) => state.changeState);
+  const [comp, setComp] = useState([]);
+  const dispatch = useDispatch();
 
-export default Nominations
+  useEffect(() => {
+    setComp(Nomination);
+  }, [ChangeState])
+
+  return (
+    <div className="Nominations">
+      <Card sectioned>
+        <div className="Nominations">
+          {comp?.map((movie: any, index: number) => {
+            return (
+              <>
+                <NominationCard key={index}
+                  movieTitle={movie.movieTitle}
+                  movieDescription={movie.movieDescription}
+                />
+                <br />
+              </>
+            );
+          })}
+        </div>
+      </Card>
+    </div>
+  );
+};
+
+export default Nominations;

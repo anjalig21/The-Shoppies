@@ -1,8 +1,4 @@
 import React from "react";
-import SearchBar from "./Components/SearchBar/SearchBar";
-import Results from "./Components/Results/Results";
-import Nominations from './Components/Nominations/Nominations'
-import "./App.css";
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,6 +7,10 @@ import {
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
+import SearchBar from "./Components/SearchBar/SearchBar";
+import Results from "./Components/Results/Results";
+import Nominations from './Components/Nominations/Nominations'
+import "./App.css";
 
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
