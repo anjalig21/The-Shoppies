@@ -16,12 +16,23 @@ const MovieCard = (props: {
   const dispatch = useDispatch();
 
   function setNominations() {
-    Nomination.push({
-      movieTitle: movieTitle,
-      movieDescription: movieDescription,
-    });
-    dispatch(setNomination(Nomination));
-    dispatch(setChangeBool());
+    let found = false;
+    for (let i = 0; i < Nomination.length; i++) {
+      if (
+        Nomination[i].movieTitle === movieTitle &&
+        Nomination[i].movieDescription === movieDescription
+      ) {
+        found = true;
+      }
+    }
+    if (!found) {
+      Nomination.push({
+        movieTitle: movieTitle,
+        movieDescription: movieDescription,
+      });
+      dispatch(setNomination(Nomination));
+      dispatch(setChangeBool());
+    }
   }
 
   return (

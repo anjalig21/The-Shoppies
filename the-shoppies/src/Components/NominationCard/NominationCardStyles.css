@@ -1,4 +1,25 @@
+.container {
+    display: flex;
+}
+
 .Nominations {
     overflow-y: auto;
     height: 60vh
+}
+.info {
+    font-weight: 300;
+    margin-top: 5%;
+}
+
+.title {
+    font-weight: 700;
+}
+
+.RemoveButton {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.spacingButton{
+    flex-grow: 1;
 }
