@@ -26,7 +26,7 @@ const BannerComp = () => {
         <Banner
           title="Congratulations, you have added 5 Nominations!"
           status="success"
-          onDismiss={() => {}}
+          onDismiss={() => {setShow(false)}}
         />
       )}
     </div>

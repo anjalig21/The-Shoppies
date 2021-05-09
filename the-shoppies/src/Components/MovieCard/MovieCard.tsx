@@ -26,18 +26,19 @@ const MovieCard = (props: {
       }
     }
     if (!found) {
-      if (Nomination.length <= 5) {
+      if (Nomination.length <= 4) {
         Nomination.push({
           movieTitle: movieTitle,
           movieDescription: movieDescription,
         });
+        window.localStorage.setItem('nominations', JSON.stringify(Nomination));
         dispatch(setNomination(Nomination));
         dispatch(setChangeBool());
         if (Nomination.length === 5) {
           dispatch(setBanner(true));
         } else {
           dispatch(setBanner(false));
-        }
+      } 
       } else {
         dispatch(setBanner(true));
       }
