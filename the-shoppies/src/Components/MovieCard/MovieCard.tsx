@@ -76,8 +76,8 @@ const MovieCard = (props: {
           />
           <div className="spacing" />
           <div>
-            <h2 className="title">{movieTitle}</h2>
-            <p className="info">{movieDescription}</p>
+            <h2 className="movieCardtitle">{movieTitle}</h2>
+            <p className="movieCardinfo">{movieDescription}</p>
           </div>
           <div className="spacingButton"></div>
           <div className="button">
