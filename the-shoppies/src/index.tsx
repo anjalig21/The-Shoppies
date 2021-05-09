@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "@shopify/polaris/dist/styles.css";
 import App from "./App";
-import enTranslations from "@shopify/polaris/locales/en.json";
 import { AppProvider } from "@shopify/polaris";
 import { Provider } from "react-redux";
 import store from "./reducers";

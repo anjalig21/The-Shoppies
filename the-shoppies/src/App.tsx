@@ -12,6 +12,7 @@ import Results from "./Components/Results/Results";
 import Nominations from "./Components/Nominations/Nominations";
 import "./App.css";
 import Banner from "./Components/Banner/Banner";
+require('dotenv').config();
 
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
@@ -23,7 +24,7 @@ const errorLink = onError(({ graphQLErrors }) => {
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: "http://localhost:5000/graphql" }),
+  new HttpLink({ uri: process.env.REACT_APP_URI }),
 ]);
 
 const client = new ApolloClient({

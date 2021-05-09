@@ -62,7 +62,7 @@ const MovieCard = (props: {
   }, [ChangeState]);
 
   return (
-    <div>
+    <div className="movieCardOutline">
       <Card sectioned>
         <div className="cont">
           <img

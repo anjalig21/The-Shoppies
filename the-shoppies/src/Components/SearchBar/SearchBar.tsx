@@ -94,7 +94,7 @@ export default function SearchBar() {
   const textField = (
     <Autocomplete.TextField
       onChange={updateText}
-      label="Nominate Your Favourite Films for the Esteemed Shoscars:"
+      label="Nominate Your Favourite Films 😄 :"
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"

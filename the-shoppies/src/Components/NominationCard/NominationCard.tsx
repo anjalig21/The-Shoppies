@@ -23,7 +23,7 @@ const NominationCard = (props: {
     window.localStorage.setItem('nominations', JSON.stringify(temp));
   }
   return (
-    <div>
+    <div className="nominatingCard">
       <Card sectioned>
         <div className="container">
           <div>
