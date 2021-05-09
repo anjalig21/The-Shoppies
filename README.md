@@ -1,9 +1,11 @@
 # Shopify-Developers-Challenge
 This is my take on The Shoppies project for the Shopify Frontend Development Challenge. This project allows you to search for any movie on the OMDB API (https://www.omdbapi.com/) in order to nominate them (up to 5). Enjoy Nominating 😉.
 
+
 # Try it Yourself
 You can nominate movies by clicking this link: [The Shoppies](https://theshopifyshoppies.web.app/) <br/>
 Here you can check out the server side view of GraphiQL: [GraphiQL](https://shoppies-nomination.herokuapp.com/graphql)
+
 
 # Notable Features 
 
@@ -24,6 +26,7 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
 <p align="center">
   <img src="media/AutoComplete.gif" alt="AutoComplete" width="500" height="290"/>
 </p>
+
 
 ## Technologies Used
 - `Node.js 14.15.3`
