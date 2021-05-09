@@ -25,7 +25,7 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
   <img src="media/AutoComplete.gif" alt="AutoComplete" width="500" height="290"/>
 </p>
 
-## Technologies Used
+# Technologies Used
 - `Node.js 14.15.3`
 - `React.js 4.0.1`
 - `Redux ^4.1.0`
