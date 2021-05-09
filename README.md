@@ -19,8 +19,8 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
   <img src="media/Animation.gif" alt="Animations" width="500" height="290"/>
 </p>
 
-### AutoComplete
-<p> AutoComplete allows you to find the title of your movie, even if you do not remember! </p>
+### Auto Complete
+<p> Auto Complete allows you to find the title of your movie, even if you do not remember! </p>
 <p align="center">
   <img src="media/AutoComplete.gif" alt="AutoComplete" width="500" height="290"/>
 </p>
