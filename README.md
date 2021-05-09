@@ -34,6 +34,8 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
 - `GraphQL ^15.5.0`
 - `Apollo/Client ^3.3.16`
 - `Shopify Polaris`
+- `Firebase`
+- `Heroku`
 - `TypeScript ^4.2.4`
 - `JavaScript`
 - `HTML`
