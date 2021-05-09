@@ -1,4 +1,10 @@
-.Nominations {
+.NominationsComp {
     flex-grow: 1;
     margin-left: 4%;
+    width: 20vw;
+}
+
+.NominationsMap {
+    overflow-y: auto;
+    height: 50vh;
 }

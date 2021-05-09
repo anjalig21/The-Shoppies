@@ -11,13 +11,7 @@ import { useDispatch } from "react-redux";
 import { setMovList } from "../../actions";
 
 export default function SearchBar() {
-  const deselectedOptions = [
-    { value: "rustic", label: "Rustic" },
-    { value: "antique", label: "Antique" },
-    { value: "vinyl", label: "Vinyl" },
-    { value: "vintage", label: "Vintage" },
-    { value: "refurbished", label: "Refurbished" },
-  ];
+  const deselectedOptions: any = [];
 
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -133,7 +127,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div style={{ height: "20vh" }} onKeyPress={(e: any) => onClicking(e)}>
+    <div style={{ height: "15vh" }} onKeyPress={(e: any) => onClicking(e)}>
       <Autocomplete
         options={options}
         selected={selectedOptions}

@@ -1,8 +1,9 @@
 .mainResults {
     flex-grow: 2;
+    width: 20vw;
 }
 
 .Results {
     overflow-y: auto;
-    height: 60vh
+    height: 50vh
 }

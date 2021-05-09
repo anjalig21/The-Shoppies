@@ -11,8 +11,8 @@ const Results = () => {
   const movieList = useSelector((state: RootState) => state.movieList);
   return (
     <div className="mainResults">
-      {console.log(search)}
       <Card sectioned>
+      <h1>Results</h1>
         <div className="Results">
           {movieList?.map((movie: any, index: number) => {
             return (

@@ -17,9 +17,10 @@ const Nominations = () => {
   }, [ChangeState])
 
   return (
-    <div className="Nominations">
+    <div className="NominationsComp">
       <Card sectioned>
-        <div className="Nominations">
+        <h1>Nominations</h1>
+        <div className="NominationsMap">
           {comp?.map((movie: any, index: number) => {
             return (
               <>
