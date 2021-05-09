@@ -8,19 +8,19 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
 # Notable Features 
 
 ## Save Nominations 
-### Accidentally left your page? No worries, this app saves all your nominations ;)
+#### Accidentally left your page? No worries, this app saves all your nominations ;)
 <p align="center">
   <img src="media/Save.gif" alt="saveNominations" width="500" height="290"/>
 </p>
 
 ## Animations
-### For a delightful user experience, I implemented buffering when movies are being loading,adding/deleting nominations, and transitions!
+#### For a delightful user experience, I implemented buffering when movies are being loading,adding/deleting nominations, and transitions!
 <p align="center">
   <img src="media/Animations.gif" alt="Animations" width="500" height="290"/>
 </p>
 
 ## AutoComplete
-### AutoComplete allows you to find the title of your movie, even if you do not remember!
+#### AutoComplete allows you to find the title of your movie, even if you do not remember!
 <p align="center">
   <img src="media/AutoComplete.gif" alt="AutoComplete" width="500" height="290"/>
 </p>
