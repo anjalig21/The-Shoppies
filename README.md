@@ -14,7 +14,7 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
 </p>
 
 ### Animations
-<p> For a delightful user experience, I implemented buffering when movies are being loading, adding/deleting nominations, and transitions!</p>
+<p> For a delightful user experience, I implemented buffering when movies are being loading, disabling the Nomination button when a movie has been nominated, adding/deleting nominations, and transitions!</p>
 <p align="center">
   <img src="media/Animation.gif" alt="Animations" width="500" height="290"/>
 </p>
