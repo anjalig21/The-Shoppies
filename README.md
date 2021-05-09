@@ -12,3 +12,17 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
 ## Animations
 
 ## AutoComplete
+
+## Technologies Used
+- `Node.js 14.15.3`
+- `React.js 4.0.1`
+- `Redux ^4.1.0`
+- `Axios ^0.21.1`
+- `Express ^4.17.1`
+- `GraphQL ^15.5.0`
+- `Apollo/Client ^3.3.16`
+- `Shopify Polaris`
+- `TypeScript ^4.2.4`
+- `JavaScript`
+- `HTML`
+- `CSS`
