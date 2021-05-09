@@ -24,6 +24,7 @@ export default function SearchBar() {
   const [options, setOptions] = useState<OptionDescriptor[]>(deselectedOptions);
   const [loading, setLoading] = useState(false);
   const [bool, setBool] = useState(true);
+  const [trigger, setTrigger] = useState(false);
   const { setSearch } = SearchBarHook();
   const dispatch = useDispatch();
   const [movieType, { data }] = useLazyQuery(LOAD_TITLE, {
@@ -31,6 +32,12 @@ export default function SearchBar() {
       title: inputValue,
     },
   });
+
+  useEffect(() => {
+    if (trigger) {
+      movieType();
+    }
+  }, [trigger]);
 
   useEffect(() => {
     let movies: OptionDescriptor[] = [];
@@ -49,6 +56,12 @@ export default function SearchBar() {
           });
         }
       });
+      if (trigger) {
+        dispatch(setMovList(data?.movieSearch));
+        setTrigger(false);
+        setBool(false);
+        setOptions([]);
+      }
     }
     setOptions(movies);
     setLoading(false);
@@ -73,14 +86,15 @@ export default function SearchBar() {
 
   const updateSelection = useCallback(
     (selected) => {
-      const selectedText = selected.map((selectedItem: any) => {
-        const matchedOption = options.find((option) => {
-          return option.value.match(selectedItem);
-        });
-        return matchedOption && matchedOption.label;
-      });
-      setSelectedOptions(selected);
-      setInputValue(selectedText);
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].value === selected[0]) {
+          const idx = (options[i]?.label as string).indexOf("(");
+          const data = (options[i]?.label as string).substring(0, idx).trim();
+          setInputValue(data);
+          setSelectedOptions(selected);
+          setTrigger(true);
+        }
+      }
     },
     [options]
   );

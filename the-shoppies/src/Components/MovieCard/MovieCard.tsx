@@ -12,7 +12,7 @@ const MovieCard = (props: {
     <div>
       <Card sectioned>
         <div className="cont">
-          <img className="posters" src={moviePoster} />
+          <img className="posters" src={moviePoster !== "N/A" ? moviePoster: "https://cdn.iconscout.com/icon/free/png-256/gallery-187-902099.png"} />
           <div className="spacing" />
           <div>
             <h2 className="title">{movieTitle}</h2>

@@ -18,7 +18,8 @@ const Results = () => {
                 })}
                 <div className="Results">
                     {movieList?.map((movie: any) => {
-                    return (<MovieCard movieTitle={movie.Title} movieDescription={movie.Year} moviePoster={movie.Poster}/>)
+                    return ( <> <MovieCard movieTitle={movie.Title} movieDescription={movie.Year} moviePoster={movie.Poster}/>
+                            <br /> </>)
                     })}
                 </div>
             </Card>
