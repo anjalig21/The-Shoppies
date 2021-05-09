@@ -10,13 +10,13 @@ Here you can check out the server side view of GraphiQL: [GraphiQL](https://shop
 ### Save Nominations 
 #### Accidentally left your page? No worries, this app saves all your nominations ;)
 <p align="center">
-  <img src="media/Save.gif" alt="saveNominations" width="500" height="290"/>
+  <img src="media/SaveNominations.gif" alt="saveNominations" width="500" height="290"/>
 </p>
 
 ### Animations
 #### For a delightful user experience, I implemented buffering when movies are being loading, adding/deleting nominations, and transitions!
 <p align="center">
-  <img src="media/Animations.gif" alt="Animations" width="500" height="290"/>
+  <img src="media/Animation.gif" alt="Animations" width="500" height="290"/>
 </p>
 
 ### AutoComplete
