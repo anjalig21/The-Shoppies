@@ -9,8 +9,9 @@ import {
 import { onError } from "@apollo/client/link/error";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import Results from "./Components/Results/Results";
-import Nominations from './Components/Nominations/Nominations'
+import Nominations from "./Components/Nominations/Nominations";
 import "./App.css";
+import Banner from "./Components/Banner/Banner";
 
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors) {
@@ -34,6 +35,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="Components">
+        <Banner />
         <SearchBar />
         <div className="ResultsandNominations">
           <Results />

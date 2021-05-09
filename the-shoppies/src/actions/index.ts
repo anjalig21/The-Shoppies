@@ -25,3 +25,10 @@ export const setChangeBool = () => {
     type: "setChangeBool",
   };
 };
+
+export const setBanner = (payload: boolean) => {
+  return {
+    type: "setBanner",
+    payload: payload
+  };
+};

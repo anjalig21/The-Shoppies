@@ -2,6 +2,7 @@ import { combineReducers, compose, createStore } from "redux";
 import changeState from "./changeState";
 import movieList from './movieList';
 import Nomination from "./Nominate";
+import showBanner from "./showBanner";
 import trigger from "./trigger";
 
 
@@ -9,7 +10,8 @@ const rootReducer = combineReducers({
     movieList: movieList,
     trigger: trigger,
     Nomination: Nomination,
-    changeState: changeState
+    changeState: changeState,
+    showBanner: showBanner
 });
 
 declare global {

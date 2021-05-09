@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button } from "@shopify/polaris";
 import "./MovieCard.css";
 import { useDispatch } from "react-redux";
-import { setChangeBool, setNomination } from "../../actions";
+import { setBanner, setChangeBool, setNomination } from "../../actions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 
@@ -26,12 +26,21 @@ const MovieCard = (props: {
       }
     }
     if (!found) {
-      Nomination.push({
-        movieTitle: movieTitle,
-        movieDescription: movieDescription,
-      });
-      dispatch(setNomination(Nomination));
-      dispatch(setChangeBool());
+      if (Nomination.length <= 5) {
+        Nomination.push({
+          movieTitle: movieTitle,
+          movieDescription: movieDescription,
+        });
+        dispatch(setNomination(Nomination));
+        dispatch(setChangeBool());
+        if (Nomination.length === 5) {
+          dispatch(setBanner(true));
+        } else {
+          dispatch(setBanner(false));
+        }
+      } else {
+        dispatch(setBanner(true));
+      }
     }
   }
 

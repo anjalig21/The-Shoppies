@@ -13,6 +13,9 @@ const Nominations = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (Nomination.length == 5) {
+      
+    }
     setComp(Nomination);
   }, [ChangeState])
 
