@@ -67,6 +67,7 @@ const MovieCard = (props: {
         <div className="cont">
           <img
             className="posters"
+            alt="posters"
             src={
               moviePoster !== "N/A"
                 ? moviePoster

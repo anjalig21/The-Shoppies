@@ -39,12 +39,17 @@
 
 .Components {
   padding: 5%;
+  background: rgb(19,110,180);
+  background: linear-gradient(42deg, rgba(19,110,180,0.8393732492997199) 8%, rgba(214,21,33,0.8085609243697479) 54%, rgba(0,217,255,0.8113620448179272) 100%);
 }
 
 .ResultsandNominations {
   display: flex;
 }
 
-/* .NominationsComponent {
-  display: flex;
-} */
+.mainTitleComp {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 250%;
+  font-family:monospace;
+}

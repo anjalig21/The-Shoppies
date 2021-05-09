@@ -2,17 +2,16 @@ import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import { Card } from "@shopify/polaris";
 import "./ResultStyles.css";
-import SearchBarHook from "../SearchBar/SearchBarHook";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducers";
 
 const Results = () => {
-  const { search } = SearchBarHook();
   const movieList = useSelector((state: RootState) => state.movieList);
   return (
     <div className="mainResults">
       <Card sectioned>
-      <h1>Results</h1>
+      <h1 className="resultsTitle">Results</h1>
+      <br />
         <div className="Results">
           {movieList?.map((movie: any, index: number) => {
             return (

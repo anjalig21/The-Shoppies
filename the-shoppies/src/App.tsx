@@ -35,12 +35,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="Components">
+        <h1 className="mainTitleComp">Welcome to The Shoppies 🎥</h1>
+        <br/>
+        <br />
         <Banner />
         <SearchBar />
         <div className="ResultsandNominations">
           <Results />
           <Nominations />
         </div>
+        <br />
       </div>
     </ApolloProvider>
   );

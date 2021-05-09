@@ -6,7 +6,6 @@ import { LOAD_TITLE } from "../../GraphQL/Queries";
 import movieInterface from "../../Models/movies";
 import { OptionDescriptor } from "@shopify/polaris/dist/types/latest/src/components/OptionList";
 import { ImageMajor } from "@shopify/polaris-icons";
-import SearchBarHook from "./SearchBarHook";
 import { useDispatch } from "react-redux";
 import { setMovList } from "../../actions";
 
@@ -19,7 +18,6 @@ export default function SearchBar() {
   const [loading, setLoading] = useState(false);
   const [bool, setBool] = useState(true);
   const [trigger, setTrigger] = useState(false);
-  const { setSearch } = SearchBarHook();
   const dispatch = useDispatch();
   const [movieType, { data }] = useLazyQuery(LOAD_TITLE, {
     variables: {
@@ -37,7 +35,7 @@ export default function SearchBar() {
     let movies: OptionDescriptor[] = [];
     if (data?.movieSearch) {
       data.movieSearch.map((movie: movieInterface) => {
-        if (movie.Type == "movie") {
+        if (movie.Type === "movie") {
           movies.push({
             value: movie.imdbID,
             label: `${movie.Title} (${movie.Year})`,
@@ -96,7 +94,7 @@ export default function SearchBar() {
   const textField = (
     <Autocomplete.TextField
       onChange={updateText}
-      label="Title"
+      label="Nominate Your Favourite Films for the Esteemed Shoscars:"
       value={inputValue}
       prefix={<Icon source={SearchMinor} color="base" />}
       placeholder="Search"
