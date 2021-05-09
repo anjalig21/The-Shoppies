@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Button } from "@shopify/polaris";
 import "./MovieCard.css";
 import { useDispatch } from "react-redux";
@@ -13,6 +13,8 @@ const MovieCard = (props: {
 }) => {
   const { movieTitle, movieDescription, moviePoster } = props;
   const Nomination = useSelector((state: RootState) => state.Nomination);
+  const ChangeState = useSelector((state: RootState) => state.changeState);
+  const [disabledButton, setDisabledButton] = useState(false);
   const dispatch = useDispatch();
 
   function setNominations() {
@@ -31,19 +33,33 @@ const MovieCard = (props: {
           movieTitle: movieTitle,
           movieDescription: movieDescription,
         });
-        window.localStorage.setItem('nominations', JSON.stringify(Nomination));
+        window.localStorage.setItem("nominations", JSON.stringify(Nomination));
         dispatch(setNomination(Nomination));
         dispatch(setChangeBool());
         if (Nomination.length === 5) {
           dispatch(setBanner(true));
         } else {
           dispatch(setBanner(false));
-      } 
+        }
       } else {
         dispatch(setBanner(true));
       }
     }
   }
+
+  useEffect(() => {
+    const result = Nomination.some((nomination: any) => {
+      if (
+        nomination.movieTitle === movieTitle &&
+        nomination.movieDescription === movieDescription
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    setDisabledButton(result);
+  }, [ChangeState]);
 
   return (
     <div>
@@ -64,7 +80,11 @@ const MovieCard = (props: {
           </div>
           <div className="spacingButton"></div>
           <div className="button">
-            <Button primary onClick={() => setNominations()}>
+            <Button
+              primary
+              disabled={disabledButton}
+              onClick={() => setNominations()}
+            >
               Nominate
             </Button>
           </div>
